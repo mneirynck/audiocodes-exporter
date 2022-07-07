@@ -4,9 +4,12 @@ from requests import Session
 from collectors.call_stats_collector import CallStatsCollector
 from collectors.cluster_stats_collector import ClusterStatsCollector
 from collectors.coder_stats_collector import CoderStatsCollector
+from collectors.ddos_stats_collector import DdosStatsCollector
 from collectors.dsp_stats_collector import DspStatsCollector
+from collectors.ha_stats_collector import HaStatsCollector
 from collectors.media_stats_collector import MediaStatsCollector
 from collectors.other_stats_collector import OtherStatsCollector
+from collectors.port_stats_collector import PortStatsCollector
 from collectors.siprec_stats_collector import SipRecStatsCollector
 from collectors.status_collector import StatusCollector
 from helpers import fetch
@@ -43,3 +46,12 @@ def collect_sbc_metrics(api_host: str, api_session: Session) -> None:
 
     print("registering media stats collector")
     REGISTRY.register(MediaStatsCollector(api_host, api_session, ip_group_data))
+
+    print("registering ddos stats collector")
+    REGISTRY.register(DdosStatsCollector(api_host, api_session))
+
+    print("registering ha stats collector")
+    REGISTRY.register(HaStatsCollector(api_host, api_session))
+
+    print("registering port stats collector")
+    REGISTRY.register(PortStatsCollector(api_host, api_session))
