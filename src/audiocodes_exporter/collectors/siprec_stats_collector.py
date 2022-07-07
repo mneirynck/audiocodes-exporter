@@ -11,7 +11,7 @@ from helpers import camel_to_snake, fetch
 
 class SipRecStatsCollector:
     """
-    Collects AudioCodes SBC SipRecStats from the API endpoint
+    Collects AudioCodes SBC SIPRec statistics from the API endpoint
     """
 
     def __init__(
