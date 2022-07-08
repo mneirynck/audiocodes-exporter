@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "audiocodes-exporter"
-version = "0.1.2"
+version = "0.1.3"
 description = "AudioCodes SBC exporter for the Prometheus monitoring system."
 authors = ["Matthew Neirynck <matthew.neirynck@telsmart.eu>"]
 license = "GPL-3.0-or-later"
