@@ -8,9 +8,9 @@ from requests import Session
 from helpers import camel_to_snake, fetch
 
 
-class PortStatsCollector:
+class CpuStatsCollector:
     """
-    Collects AudioCodes SBC port statistics from the API endpoint
+    Collects AudioCodes SBC cpu statistics from the API endpoint
     """
 
     def __init__(self, api_host: str, api_session: Session) -> None:
@@ -18,16 +18,14 @@ class PortStatsCollector:
         self._api_session = api_session
 
     def collect(self):
-        port_ids = fetch(
-            api_host=self._api_host,
-            api_session=self._api_session,
-            api_endpoint="/kpi/current/network/portStats/port",
+        cpu_ids = fetch(
+            self._api_host, self._api_session, "/kpi/current/system/cpuStats/cpu"
         )
 
         data = fetch(
             api_host=self._api_host,
             api_session=self._api_session,
-            api_endpoint="/kpi/current/network/portStats/port/0",
+            api_endpoint="/kpi/current/system/cpuStats/cpu/0",
         )
 
         metrics = {}
@@ -35,19 +33,20 @@ class PortStatsCollector:
         for item in data["items"]:
             # Create the metric families based on the ID's of the API response for the global metrics
             metrics[item["id"]] = GaugeMetricFamily(
-                camel_to_snake(item["id"]), item["description"], labels=["port"]
+                camel_to_snake(item["id"]), item["description"], labels=["cpu"]
             )
 
-        for port in port_ids["items"]:
+        for cpu in cpu_ids["items"]:
             data = fetch(
-                api_host=self._api_host,
-                api_session=self._api_session,
-                api_endpoint=f"/kpi/current/network/portStats/port/{port['id']}",
+                self._api_host,
+                self._api_session,
+                f"/kpi/current/system/cpuStats/cpu/{cpu['id']}",
             )
             for item in data["items"]:
                 if not item["value"] is None:
                     metrics[item["id"]].add_metric(
-                        labels=[f"port{port['id']}"], value=item["value"]
+                        labels=[cpu["name"]], value=item["value"]
                     )
+
         for k, v in metrics.items():
             yield v
