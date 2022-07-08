@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "audiocodes-exporter"
 version = "0.1.0"
-description = ""
+description = "AudioCodes SBC exporter for the Prometheus monitoring system."
 authors = ["Matthew Neirynck <matthew.neirynck@telsmart.eu>"]
 
 [tool.poetry.dependencies]
