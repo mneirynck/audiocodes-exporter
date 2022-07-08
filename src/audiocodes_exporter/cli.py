@@ -16,6 +16,7 @@ def init_argparse() -> ArgumentParser:
         description="Prometheus collector using AudioCodes SBC v7.4 API calls."
     )
     parser.add_argument(
+        "-H",
         "--hostname",
         type=str,
         help="AudioCodes SBC API URL.",
