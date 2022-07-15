@@ -6,7 +6,7 @@ from typing import Any
 from prometheus_client.core import GaugeMetricFamily
 from requests import Session
 
-from helpers import camel_to_snake, fetch
+from audiocodes_exporter.helpers import camel_to_snake, fetch
 
 
 class SipRecStatsCollector:

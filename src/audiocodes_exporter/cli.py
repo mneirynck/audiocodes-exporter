@@ -8,7 +8,7 @@ from requests import Session
 from requests.auth import HTTPBasicAuth
 from prometheus_client import start_http_server
 
-from collector import collect_sbc_metrics
+from audiocodes_exporter.collector import collect_sbc_metrics
 
 
 def init_argparse() -> ArgumentParser:
@@ -59,7 +59,7 @@ def main():
         api_session=session,
     )
     print("starting server")
-    start_http_server(9000)
+    start_http_server(9954)
 
     while True:
         time.sleep(1)

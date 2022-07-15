@@ -1,22 +1,22 @@
 from prometheus_client import REGISTRY
 from requests import Session
 
-from collectors.call_stats_collector import CallStatsCollector
-from collectors.cluster_stats_collector import ClusterStatsCollector
-from collectors.coder_stats_collector import CoderStatsCollector
-from collectors.cpu_stats_collector import CpuStatsCollector
-from collectors.ddos_stats_collector import DdosStatsCollector
-from collectors.dsp_stats_collector import DspStatsCollector
-from collectors.ha_stats_collector import HaStatsCollector
-from collectors.license_stats_collector import LicenseStatsCollector
-from collectors.media_stats_collector import MediaStatsCollector
-from collectors.other_stats_collector import OtherStatsCollector
-from collectors.port_stats_collector import PortStatsCollector
-from collectors.siprec_stats_collector import SipRecStatsCollector
-from collectors.status_collector import StatusCollector
-from collectors.storage_stats_collector import StorageStatsCollector
-from collectors.system_stats_collector import SystemStatsCollector
-from helpers import fetch
+from audiocodes_exporter.collectors.call_stats_collector import CallStatsCollector
+from audiocodes_exporter.collectors.cluster_stats_collector import ClusterStatsCollector
+from audiocodes_exporter.collectors.coder_stats_collector import CoderStatsCollector
+from audiocodes_exporter.collectors.cpu_stats_collector import CpuStatsCollector
+from audiocodes_exporter.collectors.ddos_stats_collector import DdosStatsCollector
+from audiocodes_exporter.collectors.dsp_stats_collector import DspStatsCollector
+from audiocodes_exporter.collectors.ha_stats_collector import HaStatsCollector
+from audiocodes_exporter.collectors.license_stats_collector import LicenseStatsCollector
+from audiocodes_exporter.collectors.media_stats_collector import MediaStatsCollector
+from audiocodes_exporter.collectors.other_stats_collector import OtherStatsCollector
+from audiocodes_exporter.collectors.port_stats_collector import PortStatsCollector
+from audiocodes_exporter.collectors.siprec_stats_collector import SipRecStatsCollector
+from audiocodes_exporter.collectors.status_collector import StatusCollector
+from audiocodes_exporter.collectors.storage_stats_collector import StorageStatsCollector
+from audiocodes_exporter.collectors.system_stats_collector import SystemStatsCollector
+from audiocodes_exporter.helpers import fetch
 
 
 def collect_sbc_metrics(api_host: str, api_session: Session) -> None:

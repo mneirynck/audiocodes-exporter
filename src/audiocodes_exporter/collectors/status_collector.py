@@ -4,7 +4,7 @@ Prometheus collectors for AudioCodes SBC.
 from prometheus_client.core import GaugeMetricFamily
 from requests import Session
 
-from helpers import convert, fetch
+from audiocodes_exporter.helpers import convert, fetch
 
 
 class StatusCollector:
